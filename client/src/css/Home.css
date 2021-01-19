@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+.hero_section {
+  height: 400px;
+  position: relative;
+}
+.heroImage {
+  width: 100%;
+  height: 400px;
+  position: absolute;
+  filter: blur(3px);
+  top: 10;
+  z-index: 1;
+  object-fit: cover;
+}
+
+.HeroContent {
+  z-index: 3;
+  font-size: 40px;
+  font-weight: 600;
+  font-family: sans-serif;
+  color: white;
+  position: relative;
+  padding: 60px;
+}
+.HeroSearch {
+  background-color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px !important;
+  padding: 15px 60px 15px 50px;
+  width: 100%;
+}
+.SearchIcon {
+  position: absolute;
+  top: 20px;
+  left: 15px;
+  color: #5fb709;
+  font-size: 25px;
+}
+.SearchContainer {
+  position: relative;
+  width: 60%;
+}
+.SearchButtonContainer {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.SearchButton {
+  width: 10rem;
+  height: 3.4rem;
+  margin-top: 11px;
+  border-top-left-radius: 0px !important;
+  background-color: #5fb709;
+  color: white;
+  user-select: none;
+}
+.SearchButton:hover {
+  background-color: #63c204;
+  color: white;
+}
+
+.Resturant_Section {
+  margin-top: 50px;
+  margin-bottom: 100px;
+}
+.Resturant_Image {
+  width: 100%;
+  height: 279px;
+}
+.Resturant_Name {
+  margin-top: 5px;
+  font-family: Roboto;
+  display: block;
+  font-size: 16px;
+  line-height: 18.75px;
+}
+.Resturant_Niche {
+  font-family: Roboto;
+  display: block;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 16px;
+  margin-top: 5px;
+  color: #757575;
+}
+.Resturant_Distance {
+  font-size: 14px;
+  margin-top: 5px;
+  background-color: rgba(0, 0, 0, 0.1);
+  width: 75px;
+}
+.Resturant_Card{
+  cursor: pointer;
+  user-select: none;
+}
+.AuthImage{
+  width: 100%;
+  height: auto;
+}
+/* Responsive */
+/* Mobile */
+@media (max-width:576px) {
+  .SearchContainer{
+    width: 100% !important;
+  }
+  .SearchButtonContainer{
+    display: none;
+  }
+  .HeroFirst{
+    padding-top: 50px;
+  }
+  .HeroFirst,
+  .HeroSecond
+  {
+    
+    font-size: 30px;
+  }
+}
+
+/* Tablet */
+@media (min-width:577px) and (max-width:768px) {
+
+}
+@media (max-width:900px){
+  .SearchContainer{
+    width: 100% !important;
+  }
+}
+/* Desktop */
+@media (min-width:769px) {
+ 
+}

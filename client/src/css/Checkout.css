@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+.CheckoutText{
+    width: 100%;
+    text-align: center;
+    font-size: 25px;
+    font-weight: 800;
+    font-family:sans-serif;
+    color: dodgerblue;
+    margin-top: 10px;
+}
+.Checkout{
+    background-color: rgba(0, 0, 0, 0.05);
+    border-radius: 5px;
+}
+.Checkout_Heading{
+    font-weight: 600;
+}
+.Checkout_Item{
+    font-weight: normal !important;
+    color: #5fb709;
+    margin-top: 5px;
+}
+.Checkout_Item span{
+    color: black;
+}
+.Heading_Edit{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.EditIcon{
+    background-color: white;
+    padding: 10px;
+    border-radius: 50%;
+    font-size: 12px;
+    margin-top: -7px;
+    cursor: pointer;
+}
+.Checkout_Item svg{
+    display: inline;
+}
+.Checkout_Item .Card_Details{
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-top: -23px;
+}
+.SubTotal_Container{
+    font-size: 15px;
+}
+.SubTotal_Container,
+.Total_Container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+.Total_Container{
+    font-weight: bold;
+    font-size: 20px;
+}
+.CheckoutImage{
+    width: 150px;
+    height: 150px;
+    border-radius: 5px;
+}
+.ImageSection{
+    margin-top: 3.5rem;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 30rem;
+    max-height: 100%;
+}
+.CheckoutItem_Name{
+    font-weight: bold;
+    font-family: Roboto,sans-serif;
+}
+.CheckoutItem_Amount{
+    font-family: Roboto,sans-serif;
+    text-align: center;
+}
+.CheckoutItem{
+    margin-top: 20px;
+}
+.CheckoutIcon{
+    position: absolute;
+   top: 10px;
+   left: 20px;
+   color: #5fb709;
+}
+.DoneButton{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+.ExpiryIcon{
+    top: 6px !important;
+    left: 35px !important;
+}
+@media (max-width:576px) {
+    .CheckoutContainer{
+        padding-left: 5px !important;
+        padding-right: 5px !important;
+    }
+    .CheckoutImage{
+        width: 100%;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    .CheckoutItem_Name{
+        width: 100%;
+        text-align: center;
+    }
+    .ImageSection{
+        height: 100% !important;
+    }
+}
+@media (min-width:577px) and (max-width:991px) {
+    .ImageSection{
+        margin-left: 5rem !important;
+        margin-right: 5rem !important;
+        height: 100% !important;
+    }
+    .CheckoutItem_Name{
+        width: 100%;
+        text-align: center;
+    }
+    .CheckoutImage{
+        width: 100%;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    .CheckoutItem_Name{
+        width: 100%;
+        text-align: center;
+    }
+
+}

@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+footer{
+    background-color:#262626;
+    color: white;
+    padding: 3rem;
+    font-family: Roboto,sans-serif;
+}
+.FooterSectionOne{
+    border-bottom: 1px solid white;
+}
+.FooterOneRow{
+    padding-bottom: 40px;
+}
+.FooterLogo{
+    font-size: 30px;
+}
+.MobileLinks{
+    margin-top: 25px;
+}
+.AppleStore{
+    margin-left: 10px !important;
+}
+.AboutHeading,
+.GetHelpHeading{
+    font-weight: bold;
+}
+.AboutItem,
+.GetHelpItem{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    user-select: none;
+}
+.FooterCopyRight{
+    font-size: 14px;
+}
+.FooterSectionTwo{
+    margin-top: 20px;
+}
+.FooterSectionLink{
+    cursor: pointer;
+    user-select: none;
+}
+@media (max-width:767px) {
+    .FooterAbout{
+        margin-top: 10px;
+        width: 100%;
+    }
+  
+}
+@media (max-width:405px) {
+    .AppleStore{
+        margin-top: 10px;
+        margin-left: 0px !important;
+        display: block;
+    }
+}

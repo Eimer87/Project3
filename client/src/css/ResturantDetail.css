@@ -1,0 +1,66 @@
+.RestaurantInfo {
+  background-color: white;
+  padding: 20px 70px;
+  max-width: 680px;
+}
+
+.RestaurantInfo p {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color: black;
+  font-size: 14px;
+  font-weight: 100;
+  color: black;
+  margin: 5px 0;
+}
+
+.RestaurantInfo .basic-info {
+  margin: 10px 0;
+}
+
+.RestaurantInfo title {
+  font-size: 16px;
+  color: black;
+}
+.itemImage {
+  object-fit: cover;
+}
+
+.gridItems {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  /* justify-content: ; */
+  /* display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  grid-template-rows: auto;
+  grid-column-gap: 20px;
+  grid-row-gap: 40px; */
+}
+.countoverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.5); /*dim the background*/
+}
+
+.MenuItemCard{
+  cursor: pointer;
+  height:;
+  user-select: none;
+}
+.CategoryImage{
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  overflow:hidden;
+}
+@media (max-width:576px) {
+  .menuNavbar{
+    display: none;
+  }
+}

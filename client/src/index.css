@@ -1,5 +1,31 @@
-body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
+@import "~bootstrap/dist/css/bootstrap.css";
+
+body{
+    font-family: sans-serif;
+    overflow-x: hidden;
+  
+}
+.green{
+    color: #5FB709;
+    font-weight: bold;
+}
+
+.Overlay{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 99;
+    background-color: rgba(0, 0, 0, 0.7);
+    animation-name:OverlayEffect;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+}
+@keyframes OverlayEffect{
+    0%{
+        transform: translateX(100%);
+    }
+    100%{
+        transform: translateX(0%);
+    }
 }

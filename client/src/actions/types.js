@@ -1,0 +1,7 @@
+export const SET_AUTH = "SET_USER";
+export const SET_LOGGEDINUSER="SET_LOGGEDINUSER";
+export const SET_RESTURANT="SET_RESTURANT";
+export const ADD_CART="ADD_CART";
+export const SET_CHECKOUT="SET_CHECKOUT";
+export const CLEAR_CART="CLEAR_CART";
+export const FILTER_RESTURANTS="FILTER_RESTURANTS";

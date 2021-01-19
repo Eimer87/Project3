@@ -1,0 +1,16 @@
+.menuNavbar {
+  display: flex;
+  list-style: none;
+  padding: 20px 5px;
+  font-size: 16px;
+  font-weight: bold;
+  align-items: center;
+  justify-content: space-around;
+  text-transform: capitalize;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+}
+.menuNavbar li:active {
+  width: auto;
+  cursor: pointer;
+}
