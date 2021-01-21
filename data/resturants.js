@@ -1,28 +1,28 @@
 const resturants = [
   {
-    name: "McDonald's® (St Martin's Lane)",
+    name: "McDonald's® (Stamford)",
     headerImage: 'https://source.unsplash.com/featured/?fastfood5421',
     category: ['Burger', 'Breakfast and brunch'],
-    address: '42 N. Beechwood St.Yakima, WA 98908',
+    address: '1103 E Main St, Stamford, CT 06901',
     category: [
       {
         categoryName: 'Burger',
         products: [
           {
             name: 'Hamburger',
-            price: 10,
-            desc: 'cheddar, onions, gherkins, english mustard, yum yum',
+            price: 4,
+            desc: 'cheddar, onions, gherkins, mustard, yum yum',
             itemImage: 'https://source.unsplash.com/featured/?fastfood243',
           },
           {
             name: 'Cheeseburger',
-            price: 20,
-            desc: 'onions, gherkins, english mustard, yum yum sauce',
+            price: 6,
+            desc: 'onions, gherkins, mustard, yum yum sauce',
             itemImage: 'https://source.unsplash.com/featured/?fastfood2389',
           },
           {
-            name: 'Beefburger',
-            price: 14,
+            name: 'McRib',
+            price: 8,
             desc:
               'crispy bacon, chilli jam, cheddar, gherkins, tomato ketchup, baco...',
             itemImage: 'https://source.unsplash.com/featured/?fastfood92384',
@@ -33,7 +33,7 @@ const resturants = [
         categoryName: 'Breakfast and brunch',
         products: [
           {
-            name: 'Breaded Butterfly King Prawns, Sweet Chilli',
+            name: 'Breaded Butterfly King Shrimp, Sweet Chilli',
             price: 10,
             desc:
               'crispy bacon, cheddar, onions, gherkins, english mustard, yum yum sauce',
@@ -51,10 +51,10 @@ const resturants = [
     ],
   },
   {
-    name: 'German Doner Kebab (Islington)',
+    name: 'Fuji (Stamford)',
     headerImage: 'https://source.unsplash.com/featured/?fastfood92431',
     category: ['Asian', 'Beef'],
-    address: '609 State St. Statesville, NC 28625',
+    address: '94 Bedford St, Stamford, CT 06901',
     category: [
       {
         categoryName: 'Asian',

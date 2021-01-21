@@ -1,9 +1,8 @@
 {
-  "name": "Dostava",
+  "name": "dostava",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
-  "type": "module",
   "scripts": {
     "build": "babel server.js -d dist",
     "server": " npm run build  && nodemon server.js",
@@ -11,7 +10,9 @@
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "data:import": "node seeder",
     "data:destroy": "node seeder -d",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "heroku-prebuild": "set NODE_ENV=production && npm install",
+    "heroku-postbuild": " npm install && cd client && npm install && npm run build"
   },
   "author": "",
   "license": "ISC",
@@ -22,6 +23,7 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-async-handler": "^1.1.4",
+    "express-validator": "^6.9.2",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.10.6",
     "morgan": "^1.10.0"
@@ -31,7 +33,6 @@
     "@babel/core": "^7.12.10",
     "@babel/preset-env": "^7.12.11",
     "concurrently": "^5.3.0",
-    "express-validator": "^6.9.2",
     "nodemon": "^2.0.4"
   }
 }

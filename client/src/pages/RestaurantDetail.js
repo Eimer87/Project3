@@ -1,24 +1,20 @@
-import React, { Fragment, useState,useEffect } from 'react';
-import Header from '../components/Header';
+import React, { Fragment, useState, useEffect } from 'react';
+// import Header from '../components/Header';
 import MenuNavbar from '../components/MenuNavbar';
 import '../css/ResturantDetail.css';
 import MenuItem from '../components/MenuItem';
 import OrderModal from '../components/OrderModal';
-import {connect} from "react-redux";
-import {useHistory} from "react-router-dom";
-let HeaderImage =
-  'https://images.unsplash.com/photo-1561758033-d89a9ad46330?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80';
-const ResturantDetail = ({setOverlay,Resturant:
-  {
-    ResturantItem
-  }
-}) => {
+import { connect } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+// let HeaderImage =
+//   'https://images.unsplash.com/photo-1561758033-d89a9ad46330?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80';
+const ResturantDetail = ({ setOverlay, Resturant: { ResturantItem } }) => {
   const [ShowModal, setShowModal] = useState(false);
   let history = useHistory();
   useEffect(() => {
-    if(!ResturantItem.category)
-    history.push("/")
-  }, [])
+    if (!ResturantItem.category) history.push('/');
+    // eslint-disable-next-line
+  }, []);
   // let category = [
   //   {
   //     id: 1,
@@ -137,21 +133,20 @@ const ResturantDetail = ({setOverlay,Resturant:
   // ];
   return (
     <Fragment>
-      {
-        ShowModal&&
-        <OrderModal
-          setOverlay={setOverlay}
-          setShowModal={setShowModal}
-        />
-      }
- 
-      <div className='' style={{
-            height: "380px",
-            background: `url(${ResturantItem.headerImage}) no-repeat center center`,
-            backgroundSize: 'cover',
-            display: 'flex',
-            alignItems: 'center',
-      }}>
+      {ShowModal && (
+        <OrderModal setOverlay={setOverlay} setShowModal={setShowModal} />
+      )}
+
+      <div
+        className=''
+        style={{
+          height: '380px',
+          background: `url(${ResturantItem.headerImage}) no-repeat center center`,
+          backgroundSize: 'cover',
+          display: 'flex',
+          alignItems: 'center',
+        }}
+      >
         <div className='RestaurantInfo'>
           <span className='title' size='30px'>
             {ResturantItem.name}
@@ -159,44 +154,45 @@ const ResturantDetail = ({setOverlay,Resturant:
 
           <div className='basic-info'>
             <p>$ &middot;15</p>
-            <p>{ResturantItem.deliverytime}  Delivery Fee</p>
+            <p>{ResturantItem.deliverytime} Delivery Fee</p>
           </div>
 
           <div className='address'>
             <p>{ResturantItem.address} </p>
           </div>
         </div>
-      </div>{
-      ResturantItem.category&&
-      <MenuNavbar navlinks={ResturantItem.category} />
-     }<div className="my-5">        
-      {ResturantItem.category
-      &&
-      ResturantItem.category.map((item) => {
-        return (
-          <div id={item.categoryName} className='container'>
-            <h3>{item.categoryName}</h3>
-            <div className='gridItems'>
-              {item.products.map((product) => {
-                return <MenuItem product={product}
-                setOverlay={setOverlay}
-                setShowModal={setShowModal}
-                />;
-              })}
-            </div>
-          </div>
-        );
-      })}
-    </div>
-  
+      </div>
+      {ResturantItem.category && (
+        <MenuNavbar navlinks={ResturantItem.category} />
+      )}
+      <div className='my-5'>
+        {ResturantItem.category &&
+          ResturantItem.category.map((item) => {
+            return (
+              <div id={item.categoryName} className='container'>
+                <h3>{item.categoryName}</h3>
+                <div className='gridItems'>
+                  {item.products.map((product) => {
+                    return (
+                      <MenuItem
+                        product={product}
+                        setOverlay={setOverlay}
+                        setShowModal={setShowModal}
+                      />
+                    );
+                  })}
+                </div>
+              </div>
+            );
+          })}
+      </div>
     </Fragment>
   );
 };
 
-
-const MapStateToProps  = (state,ownProps) =>({
-  Resturant:state.Resturant,
-  setOverlay:ownProps.setOverlay
+const MapStateToProps = (state, ownProps) => ({
+  Resturant: state.Resturant,
+  setOverlay: ownProps.setOverlay,
 });
 
-export default  connect(MapStateToProps,{})(ResturantDetail);
+export default connect(MapStateToProps, {})(ResturantDetail);

@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react';
 import { useHistory } from 'react-router-dom';
-import {connect} from "react-redux";
-import {setResturant} from "../actions/ResturantAction";
-const ResturantCard = ({resturantItem,setResturant}) => {
+import { connect } from 'react-redux';
+import { setResturant } from '../actions/ResturantAction';
+const ResturantCard = ({ resturantItem, setResturant }) => {
   let history = useHistory();
 
   return (
@@ -10,14 +10,15 @@ const ResturantCard = ({resturantItem,setResturant}) => {
       <div
         className='Resturant_Card'
         onClick={() => {
-        setResturant({
-          name:"ResturantItem",
-          value:resturantItem
-        })
+          setResturant({
+            name: 'ResturantItem',
+            value: resturantItem,
+          });
           history.push('/resturantDetail');
         }}
       >
         <img
+          alt='food'
           className='Resturant_Image'
           src={resturantItem.headerImage}
         />
@@ -28,8 +29,8 @@ const ResturantCard = ({resturantItem,setResturant}) => {
     </Fragment>
   );
 };
-const MapStateToProps = (state,ownProps) =>({
-  Resturant:state.Resturant,
-  resturantItem:ownProps.resturantItem
-})
-export default connect(MapStateToProps,{setResturant})(ResturantCard);
+const MapStateToProps = (state, ownProps) => ({
+  Resturant: state.Resturant,
+  resturantItem: ownProps.resturantItem,
+});
+export default connect(MapStateToProps, { setResturant })(ResturantCard);

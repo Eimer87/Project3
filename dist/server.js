@@ -1,25 +1,25 @@
-const path = require('path');
+"use strict";
 
-const express = require('express');
+// const path =require('path');
+var express = require('express');
 
-const dotenv = require('dotenv');
+var dotenv = require('dotenv');
 
-const morgan = require('morgan');
+var morgan = require('morgan');
 
-const {
-  notFound,
-  errorHandler
-} = require('./middleware/errorMiddleware.js');
+var _require = require('./middleware/errorMiddleware.js'),
+    notFound = _require.notFound,
+    errorHandler = _require.errorHandler;
 
-const connectDB = require('./config/db');
+var connectDB = require('./config/db');
 
-const resturantRoutes = require('./routes/resturantRoutes.js');
+var resturantRoutes = require('./routes/resturantRoutes.js');
 
-const userRoutes = require('./routes/userRoutes.js');
+var userRoutes = require('./routes/userRoutes.js');
 
 dotenv.config();
 connectDB();
-const app = express();
+var app = express();
 
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
@@ -27,21 +27,23 @@ if (process.env.NODE_ENV === 'development') {
 
 app.use(express.json());
 app.use('/api/resturant', resturantRoutes);
-app.use('/api/users', userRoutes); // const __dirname = path.resolve();
-// app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
+app.use('/api/users', userRoutes); //Serve static assets in production
 // if (process.env.NODE_ENV === 'production') {
-//   app.use(express.static(path.join(__dirname, '/froconst __dirname = path.resolve();
-//   // app.use('/uploads', express.static(path.join(__dirname, '/uploads')));ntend/build')));
-//   app.get('*', (req, res) =>
-//     res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'))
-//   );
-// } else {
+// }
 
-app.get('/', (req, res) => {
-  res.send('API is running....');
-}); // }
+if (process.env.NODE_ENV === 'production') {
+  //   //Set static folder
+  app.use(express["static"]('client/build'));
+  app.get('*', function (req, res) {
+    return res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+  });
+} else {
+  app.get('/', function (req, res) {
+    res.send('API is running....');
+  });
+}
 
 app.use(notFound);
 app.use(errorHandler);
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`));
+var PORT = process.env.PORT || 5000;
+app.listen(PORT, console.log("Server running in ".concat(process.env.NODE_ENV, " mode on port ").concat(PORT)));
