@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { Fragment, useState } from 'react';
 import '../css/Checkout.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -10,26 +10,28 @@ import {
   faMapMarkerAlt,
   faPencilAlt,
   faPhoneAlt,
+  faTimes,
   faUser,
   faUserAlt,
 } from '@fortawesome/free-solid-svg-icons';
 import { connect } from 'react-redux';
-import { setCheckout, createOrder } from '../actions/CheckoutAction';
-import {clearCart} from "../actions/ResturantAction";
+import { setCheckout, createOrder,RemoveCartItem } from '../actions/CheckoutAction';
+import { clearCart } from '../actions/ResturantAction';
 // import { LoginUser } from '../actions/AuthAction';
 import Swal from 'sweetalert2';
-import {useHistory } from "react-router-dom";
+import { useHistory } from 'react-router-dom';
 const Checkout = ({
   Resturant: { Cart, products },
   Auth: { LoggedInUser },
   Checkout: { Location, Mobile, Account, Month, Year, CVC },
   setCheckout,
   createOrder,
-  clearCart
+  clearCart,
+  RemoveCartItem
 }) => {
   let SubTotal = 0;
   let Total = 0;
-  let history=useHistory();
+  let history = useHistory();
   const [ShippingAddress, setShippingAddres] = useState(false);
   const [Payment, setPayment] = useState(false);
   const onChange = (e) => {
@@ -55,8 +57,8 @@ const Checkout = ({
       return false;
     }
   };
-  const handleOrder =async () => {
-  let response= await createOrder({
+  const handleOrder = async () => {
+    let response = await createOrder({
       userId: LoggedInUser.id,
       Location,
       Mobile,
@@ -74,7 +76,7 @@ const Checkout = ({
       });
 
       clearCart();
-      history.push("/");
+      history.push('/');
     }
   };
   return (
@@ -243,7 +245,7 @@ const Checkout = ({
                             <input
                               type='text'
                               className='form-control InputWithIcon'
-                              placeholder='Expiry Month'
+                              placeholder='Exp Month'
                               name='Month'
                               onChange={onChange}
                               value={Month}
@@ -256,7 +258,7 @@ const Checkout = ({
                             <input
                               type='text'
                               className='form-control InputWithIcon'
-                              placeholder='Expiry Year'
+                              placeholder='Exp Year'
                               name='Year'
                               onChange={onChange}
                               value={Year}
@@ -333,13 +335,14 @@ const Checkout = ({
                 </div>
                 <div className='SubTotal_Container'>
                   <div className='SubTotal_Heading'>SubTotal</div>
-                  <div className='SubTotal_Heading'>{
-                    Cart.map((cart,index)=>{
-                       SubTotal +=cart.cartItem.price
-                      if(index===Cart.length-1)
-                        return <div>${SubTotal}</div>
-                    })
-                  }</div>
+                  <div className='SubTotal_Heading'>
+                    {Cart.map((cart, index) => {
+                      SubTotal += (cart.cartItem.price*cart.quantity);
+                      if (index === Cart.length - 1)
+                        return <div key={index}>${SubTotal}</div>;
+                      return null;
+                    })}
+                  </div>
                 </div>
                 <div className='SubTotal_Container'>
                   <div className='SubTotal_Heading'>Taxes</div>
@@ -349,13 +352,11 @@ const Checkout = ({
                 <div className='Total_Container pb-3 '>
                   <div className='Total_Heading'>Total</div>
                   <div className='Total_Heading'>
-                  {
-                    Cart.map((cart,index)=>{
-                      Total+=cart.cartItem.price
-                      if(index===Cart.length-1)
-                        return <div>${Total}</div>
-                    })
-                  }
+                    {Cart.map((cart, index) => {
+                      Total += (cart.cartItem.price*cart.quantity);
+                      if (index === Cart.length - 1) return <div key={index}>${Total}</div>;
+                      return null;
+                    })}
                   </div>
                 </div>
                 <button
@@ -370,15 +371,26 @@ const Checkout = ({
             <div className='col-lg-6 col-md-12 col-sm-12'>
               <div className='ImageSection'>
                 <div className='row'>
-                  {Cart.map((cart) => {
+                  {Cart.map((cart,index) => {
                     return (
-                      <Fragment>
+                      <Fragment key={index}>
                         <div className='col-lg-4 col-md-6 col-sm-12'>
                           <div className='CheckoutItem'>
-                            <img
-                              src={require(`../assets/Resturants/${cart.cartItem.itemImage}`)}
-                              className='CheckoutImage'
-                            />
+                            <div className="CheckoutImageContainer">
+                                  <img
+                                    alt='food'
+                                    src={require(`../assets/Resturants/${cart.cartItem.itemImage}`)}
+                                    className='CheckoutImage'
+                                  />
+                                  <div 
+                                     className="RemoveCartItem"
+                                     onClick={()=>{
+                                      RemoveCartItem(cart.cartItem._id)
+                                     }}
+                                     >
+                                    <FontAwesomeIcon icon={faTimes}/>
+                                  </div>
+                            </div>
                             <div className='CheckoutItem_Name'>
                               {cart.cartItem.name}
                             </div>
@@ -404,4 +416,9 @@ const MapStateToProps = (state) => ({
   Auth: state.Auth,
   Checkout: state.Checkout,
 });
-export default connect(MapStateToProps, { setCheckout, createOrder,clearCart })(Checkout);
+export default connect(MapStateToProps, {
+  setCheckout,
+  createOrder,
+  clearCart,
+  RemoveCartItem
+})(Checkout);

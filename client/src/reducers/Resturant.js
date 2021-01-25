@@ -1,4 +1,4 @@
-import { SET_RESTURANT, ADD_CART, CLEAR_CART,FILTER_RESTURANTS } from '../actions/types';
+import { SET_RESTURANT, ADD_CART, CLEAR_CART,FILTER_RESTURANTS, REMOVE_CARTITEM } from '../actions/types';
 
 const initialState = {
   ResturantList: [],
@@ -18,17 +18,39 @@ export default (state = initialState, action) => {
       };
     }
     case ADD_CART: {
-      return {
-        ...state,
-        Cart: [...state.Cart, action.payload],
-        products: [
-          ...state.products,
-          {
-            productId: action.payload.cartItem._id,
-            resturantId: action.payload.resturantId,
-          },
-        ],
-      };
+      let Exists=false;
+      state.Cart.map((item)=>{
+        if(action.payload.cartItem._id===item.cartItem._id){
+          Exists=true;
+        }
+        return item;
+      });
+      if(Exists){
+        return{
+          ...state,
+          Cart:state.Cart.map((item)=>{
+            if(item.cartItem._id===action.payload.cartItem._id){
+              return {...action.payload,quantity:(item.quantity+action.payload.quantity)
+              }
+            }else{
+              return item
+            }
+          })
+        }
+      }else{
+        return {
+          ...state,
+          Cart: [...state.Cart, action.payload],
+          products: [
+            ...state.products,
+            {
+              productId: action.payload.cartItem._id,
+              resturantId: action.payload.resturantId,
+            },
+          ],
+        };
+      }
+ 
     }
     case CLEAR_CART:{
       return {
@@ -44,6 +66,14 @@ export default (state = initialState, action) => {
          return resturant.name.match(regex);
        }),
       } 
+    }
+    case REMOVE_CARTITEM:{
+      return{
+        ...state,
+        Cart:state.Cart.filter((item)=>{
+          return item.cartItem._id!==action.payload
+        })
+      }
     }
 
     default:

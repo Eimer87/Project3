@@ -1,5 +1,4 @@
 import React, { Fragment, useState,useEffect } from 'react';
-import Header from '../components/Header';
 import MenuNavbar from '../components/MenuNavbar';
 import '../css/ResturantDetail.css';
 import MenuItem from '../components/MenuItem';
@@ -8,7 +7,7 @@ import {connect} from "react-redux";
 import {useHistory} from "react-router-dom";
 import ReactStars from 'react-stars'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMapPin,faHamburger,faPhoneAlt, faMapMarkedAlt } from '@fortawesome/free-solid-svg-icons';
+import {faHamburger,faPhoneAlt, faMapMarkedAlt } from '@fortawesome/free-solid-svg-icons';
 const ResturantDetail = ({setOverlay,Resturant:
   {
     ResturantItem
@@ -16,11 +15,10 @@ const ResturantDetail = ({setOverlay,Resturant:
 }) => {
   const [ShowModal, setShowModal] = useState(false);
   let history = useHistory();
-  let ResturantImage=ResturantItem.headerImage;
   useEffect(() => {
     if(!ResturantItem.category)
     history.push("/")
-  }, [])
+  }, [ResturantItem.category,history])
 
   return (
     <Fragment>

@@ -14,10 +14,12 @@ const Footer = () => {
                         <img 
                          src={require("../assets/Footer/PlayStore.png")}
                          className="PlayStore"
+                         alt="PlayStore"
                          />
                         <img 
                          src={require("../assets/Footer/AppleStore.png")}
                          className="AppleStore"
+                         alt="AppleStore"
                          />
                     </div>
                  </div>

@@ -1,5 +1,5 @@
 import Axios from "axios";
-import { SET_AUTH, SET_LOGGEDINUSER } from "./types";
+import { SET_AUTH } from "./types";
 import Swal from "sweetalert2";
 
 export const setAuth = (data) => async (dispatch) => {
@@ -13,11 +13,7 @@ export const setAuth = (data) => async (dispatch) => {
 export const RegisterUser = (data) => async (dispatch) => {
  try {
         console.log(data);
-        const config ={
-            headers:{
-             "Content-Type":"application/json"
-        }
-    };
+
     let response  = await Axios.post("/api/users/",{
         name:data.Register_Name,
         email:data.Register_Email,

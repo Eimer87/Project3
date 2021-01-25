@@ -11,8 +11,7 @@ import Checkout from './pages/Checkout';
 import { Provider } from "react-redux";
 import store from "./store";
 import { PersistGate } from "redux-persist/lib/integration/react";
-import { persistStore, persistReducer } from "redux-persist";
-import storage from "redux-persist/lib/storage";
+import { persistStore } from "redux-persist";
 function App() {
   const [Overlay, setOverlay] = useState(false);
   const persistor = persistStore(store);

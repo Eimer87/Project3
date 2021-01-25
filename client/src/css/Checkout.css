@@ -138,3 +138,22 @@
     }
 
 }
+.CheckoutImageContainer{
+    position: relative;
+
+}
+.RemoveCartItem{
+    position: absolute;
+    background-color: white;
+    top: -1rem;
+    right: 0.6rem;
+    border: 2px solid #5fb709;
+    padding:10px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.RemoveCartItem:hover{
+    color: white;
+    background-color: #5fb709;
+    border: 2px solid white;
+}

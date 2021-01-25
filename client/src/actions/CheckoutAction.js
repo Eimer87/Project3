@@ -1,5 +1,5 @@
 import Axios from 'axios';
-import { SET_CHECKOUT } from './types';
+import { REMOVE_CARTITEM, SET_CHECKOUT } from './types';
 // import store from '../store';
 import Swal from 'sweetalert2';
 
@@ -44,5 +44,13 @@ export const createOrder = (data) => async (dispatch) => {
        text: error.response.data.errors[0].msg
        })
        console.error(error);
+  }
+};
+
+export const RemoveCartItem = (data) => async (dispatch) => {
+  try {
+    dispatch({ type: REMOVE_CARTITEM, payload: data });
+  } catch (error) {
+    console.error(error);
   }
 };

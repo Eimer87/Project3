@@ -1,6 +1,5 @@
 import React, { Fragment, useState } from 'react';
 import '../css/OrderModal.css';
-import Checkbox from 'rc-checkbox';
 import 'rc-checkbox/assets/index.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faMinus, faTimes } from '@fortawesome/free-solid-svg-icons';
@@ -12,9 +11,7 @@ const OrderModal = ({
   Resturant: { CategroyItem, ResturantItem },
   addToCart,
 }) => {
-  function onChange(e) {
-    console.log('Checkbox checked:', e.target.checked);
-  }
+
   const [counter, setCounter] = useState(1);
   const IncrementCounter = () => {
     setCounter(counter + 1);
@@ -35,7 +32,11 @@ const OrderModal = ({
           >
             <FontAwesomeIcon icon={faTimes} />
           </div>
-          <img src={require(`../assets/Resturants/${CategroyItem.itemImage}`)} className='ModalImage' />
+          <img 
+          src={require(`../assets/Resturants/${CategroyItem.itemImage}`)}
+           className='ModalImage'
+           alt="ModalImage"
+           />
 
           <div className='container mb-4'>
             <div className='MenuItemTitle'>{CategroyItem.name}</div>

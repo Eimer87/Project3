@@ -32,11 +32,7 @@ export const addToCart = (data) => async (dispatch) => {
 export const getResturant = (data) => async (dispatch) => {
     try {
            console.log(data);
-           const config ={
-               headers:{
-                "Content-Type":"application/json"
-           }
-       };
+
        let response  = await Axios.get("/api/resturant/");
        
        console.log(response);

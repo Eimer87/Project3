@@ -15,15 +15,17 @@ const Home = ({Resturant:{
       name:"filterResturant",
       value:[]
     })
-  }, []);
+  }, [setResturant,getResturant]);
   const onChange = e =>{
     FilterResturant(e.target.value)
   }
   return (
     <Fragment>
+        <img src={require('../assets/hero.jpg')} className='heroImage' alt="heroImage" />
+      
       <section className='hero_section'>
         {/* <div className="hero"> </div> */}
-        <img src={require('../assets/hero.jpg')} className='heroImage' />
+        <div className="container">
         <div className='hero_overlay'></div>
         <div className='HeroContent'>
           <div className='HeroFirst'>
@@ -42,6 +44,8 @@ const Home = ({Resturant:{
               <button className='btn SearchButton'>Search</button>
             </div>
           </div>
+        </div>
+   
         </div>
       </section>
       <section className='Resturant_Section'>

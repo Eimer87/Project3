@@ -1,7 +1,7 @@
 import React,{Fragment,useEffect} from 'react'
 import "../css/Auth.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser,faEnvelope,faLock } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope,faLock } from '@fortawesome/free-solid-svg-icons';
 import {useHistory} from "react-router-dom";
 import {connect} from "react-redux";
 import {LoginUser,setAuth} from "../actions/AuthAction";
