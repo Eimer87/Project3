@@ -28,7 +28,7 @@ const MenuItem = ({ product,setOverlay,setShowModal,setResturant }) => {
           <img
 
             className="CategoryImage"
-            src={product.itemImage}
+            src={require(`../assets/Resturants/${product.itemImage}`)}
             alt=''
           />
         </div>

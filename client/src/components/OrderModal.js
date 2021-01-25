@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from 'react';
 import '../css/OrderModal.css';
-// import Checkbox from 'rc-checkbox';
+import Checkbox from 'rc-checkbox';
 import 'rc-checkbox/assets/index.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faMinus, faTimes } from '@fortawesome/free-solid-svg-icons';
@@ -12,9 +12,9 @@ const OrderModal = ({
   Resturant: { CategroyItem, ResturantItem },
   addToCart,
 }) => {
-  // function onChange(e) {
-  //   console.log('Checkbox checked:', e.target.checked);
-  // }
+  function onChange(e) {
+    console.log('Checkbox checked:', e.target.checked);
+  }
   const [counter, setCounter] = useState(1);
   const IncrementCounter = () => {
     setCounter(counter + 1);
@@ -35,58 +35,14 @@ const OrderModal = ({
           >
             <FontAwesomeIcon icon={faTimes} />
           </div>
-          <img alt='food' src={CategroyItem.itemImage} className='ModalImage' />
+          <img src={require(`../assets/Resturants/${CategroyItem.itemImage}`)} className='ModalImage' />
 
           <div className='container mb-4'>
             <div className='MenuItemTitle'>{CategroyItem.name}</div>
             <div className='MenuItemTitleDesc'>{CategroyItem.desc}</div>
           </div>
 
-          {/* <div className="MenuOption">
-                    <div className="MenuItemContainer">
-                            <div className="MenuItem_Heading">
-                                Double Meat
-                            </div>
-                            <div className="MenuItem_Desc">
-                                Choose up to 1
-                            </div>
-                        </div>
-                    <div className="MenuItemValue">
-                        <label>
-                                <Checkbox
-                                    defaultChecked
-                                    onChange={onChange}
-                                />
-                                &nbsp; meat
-                        </label>
-                        <div className="MenuItemPrice">
-                                $1.25
-                        </div>
-                        </div>                               
-                </div>
-                <div className="MenuOption">
-                    <div className="MenuItemContainer">
-                            <div className="MenuItem_Heading">
-                                Double Meat
-                            </div>
-                            <div className="MenuItem_Desc">
-                                Choose up to 1
-                            </div>
-                        </div>
-                    <div className="MenuItemValue">
-                        <label>
-                                <Checkbox
-                                    defaultChecked
-                                    onChange={onChange}
-                                />
-                                &nbsp; meat
-                        </label>
-                        <div className="MenuItemPrice">
-                                $1.25
-                        </div>
-                        </div>                               
-                </div>
-      */}
+         
           <div className='MenuOption'>
             <div className='MenuItemContainer'>
               <div className='MenuItem_Heading pb-3'>Special Instructions</div>

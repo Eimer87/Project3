@@ -74,8 +74,19 @@
   display: block;
   font-size: 16px;
   line-height: 18.75px;
+  text-align: center;
 }
 .Resturant_Niche {
+  font-family: Roboto;
+  display: block;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 16px;
+  margin-top: 5px;
+  color: #757575;
+}
+.Resturant_Address {
   font-family: Roboto;
   display: block;
   font-style: normal;
@@ -92,12 +103,25 @@
   width: 75px;
 }
 .Resturant_Card{
+  display: flex;
   cursor: pointer;
   user-select: none;
+  width: 100%;
 }
 .AuthImage{
   width: 100%;
   height: auto;
+}
+.Resturant_Rating{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.Resturant_Content{
+  padding: 5px 20px 10px 20px;
+}
+.Resturant_Icon{
+  color: #757575;
 }
 /* Responsive */
 /* Mobile */

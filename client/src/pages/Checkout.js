@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import '../css/Checkout.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -15,21 +15,21 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { connect } from 'react-redux';
 import { setCheckout, createOrder } from '../actions/CheckoutAction';
-import { clearCart } from '../actions/ResturantAction';
+import {clearCart} from "../actions/ResturantAction";
 // import { LoginUser } from '../actions/AuthAction';
 import Swal from 'sweetalert2';
-import { useHistory } from 'react-router-dom';
+import {useHistory } from "react-router-dom";
 const Checkout = ({
   Resturant: { Cart, products },
   Auth: { LoggedInUser },
   Checkout: { Location, Mobile, Account, Month, Year, CVC },
   setCheckout,
   createOrder,
-  clearCart,
+  clearCart
 }) => {
   let SubTotal = 0;
   let Total = 0;
-  let history = useHistory();
+  let history=useHistory();
   const [ShippingAddress, setShippingAddres] = useState(false);
   const [Payment, setPayment] = useState(false);
   const onChange = (e) => {
@@ -55,8 +55,8 @@ const Checkout = ({
       return false;
     }
   };
-  const handleOrder = async () => {
-    let response = await createOrder({
+  const handleOrder =async () => {
+  let response= await createOrder({
       userId: LoggedInUser.id,
       Location,
       Mobile,
@@ -74,7 +74,7 @@ const Checkout = ({
       });
 
       clearCart();
-      history.push('/');
+      history.push("/");
     }
   };
   return (
@@ -333,14 +333,13 @@ const Checkout = ({
                 </div>
                 <div className='SubTotal_Container'>
                   <div className='SubTotal_Heading'>SubTotal</div>
-                  <div className='SubTotal_Heading'>
-                    {Cart.map((cart, index) => {
-                      SubTotal += cart.cartItem.price;
-                      if (index === Cart.length - 1)
-                        return <div>${SubTotal}</div>;
-                      return null;
-                    })}
-                  </div>
+                  <div className='SubTotal_Heading'>{
+                    Cart.map((cart,index)=>{
+                       SubTotal +=cart.cartItem.price
+                      if(index===Cart.length-1)
+                        return <div>${SubTotal}</div>
+                    })
+                  }</div>
                 </div>
                 <div className='SubTotal_Container'>
                   <div className='SubTotal_Heading'>Taxes</div>
@@ -350,11 +349,13 @@ const Checkout = ({
                 <div className='Total_Container pb-3 '>
                   <div className='Total_Heading'>Total</div>
                   <div className='Total_Heading'>
-                    {Cart.map((cart, index) => {
-                      Total += cart.cartItem.price;
-                      if (index === Cart.length - 1) return <div>${Total}</div>;
-                      return null;
-                    })}
+                  {
+                    Cart.map((cart,index)=>{
+                      Total+=cart.cartItem.price
+                      if(index===Cart.length-1)
+                        return <div>${Total}</div>
+                    })
+                  }
                   </div>
                 </div>
                 <button
@@ -375,8 +376,7 @@ const Checkout = ({
                         <div className='col-lg-4 col-md-6 col-sm-12'>
                           <div className='CheckoutItem'>
                             <img
-                              alt='food'
-                              src={cart.cartItem.itemImage}
+                              src={require(`../assets/Resturants/${cart.cartItem.itemImage}`)}
                               className='CheckoutImage'
                             />
                             <div className='CheckoutItem_Name'>
@@ -404,8 +404,4 @@ const MapStateToProps = (state) => ({
   Auth: state.Auth,
   Checkout: state.Checkout,
 });
-export default connect(MapStateToProps, {
-  setCheckout,
-  createOrder,
-  clearCart,
-})(Checkout);
+export default connect(MapStateToProps, { setCheckout, createOrder,clearCart })(Checkout);

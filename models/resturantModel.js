@@ -28,6 +28,10 @@ const resturantSchema = mongoose.Schema(
       type: String,
       required: true,
     },
+    rating:{
+      type:String,
+      required:true
+    },
     headerImage: {
       type: String,
       required: true,
@@ -38,14 +42,20 @@ const resturantSchema = mongoose.Schema(
         required: true,
       },
     ],
+    phone:{
+      type:String,
+      required:true
+    },
     address: {
       type: String,
       required: true,
     },
-    deliverytime: {
+    description:{
       type: String,
       required: true,
-      default: '25-30 min',
+    },
+    foodType:{
+      type:String
     },
     category: [categorySchema],
   },

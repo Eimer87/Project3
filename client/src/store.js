@@ -1,21 +1,24 @@
-import { createStore, applyMiddleware } from 'redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
-import thunk from 'redux-thunk';
-import rootReducer from './reducers';
+import { createStore, applyMiddleware } from "redux";
+import { composeWithDevTools } from "redux-devtools-extension";
+import thunk from "redux-thunk";
+import rootReducer from "./reducers";
 
-// import { PersistGate } from "redux-persist/lib/integration/react";
-import { persistReducer } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
+import { PersistGate } from "redux-persist/lib/integration/react";
+import { persistStore, persistReducer } from "redux-persist";
+import storage from "redux-persist/lib/storage";
+
 
 const initialState = {};
+
 
 const middleware = [thunk];
 const persistConfig = {
   timeout: 1000,
-  key: 'root',
-  storage,
+    key: 'root',
+    storage,
 };
 const persistedReducer = persistReducer(persistConfig, rootReducer);
+
 
 const store = createStore(
   persistedReducer,
