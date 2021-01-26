@@ -1,10 +1,13 @@
 # Dostava App
+MERN application.
 
 ## Food ordering app
 
 This app will alow user to order food from nearby restaurants.
 
-## Starting the app locally
+## Install
+
+- Starting the app locally
 
 Start by installing front and backend dependencies. While in this directory, run the following command:
 
@@ -19,3 +22,5 @@ After both installations complete, run the following command in your terminal:
 ```
 npm start
 ```
+## Deployed link
+dostava.herokuapp.com/
